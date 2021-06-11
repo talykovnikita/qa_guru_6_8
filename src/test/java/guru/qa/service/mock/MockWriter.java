@@ -8,7 +8,7 @@ public class MockWriter implements Writer {
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
     @Override
-    public void write(String output){
+    public void handleString(String output){
         try {
             outputStream.write(output.getBytes());
         } catch (IOException e) {

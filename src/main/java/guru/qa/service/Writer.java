@@ -1,7 +1,7 @@
 package guru.qa.service;
 
 public interface Writer {
-    void write(String output);
+    void handleString(String output);
 
     String readFromOutputStream();
 }

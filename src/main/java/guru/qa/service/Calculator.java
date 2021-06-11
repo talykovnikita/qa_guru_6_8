@@ -15,15 +15,15 @@ public class Calculator {
     }
 
     public String start() {
-        writer.write(Messages.WelcomeMessage.getMessage());
+        writer.handleString(Messages.WelcomeMessage.getMessage());
         int first = reader.readFirstArg();
         int second = reader.readSecondArg();
-        writer.write(Messages.RequestForOperator.getMessage());
+        writer.handleString(Messages.RequestForOperator.getMessage());
         Operation po = reader.readMathOperation();
         int result = po.getOperation().invoke(first, second);
 
         String output = first + " " + po.getSymbol() + " " + second + " = " + result;
-        writer.write(String.format(Messages.ResultTemplate.getMessage(), output));
+        writer.handleString(String.format(Messages.ResultTemplate.getMessage(), output));
         return output;
     }
 
