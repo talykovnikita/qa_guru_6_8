@@ -26,8 +26,4 @@ public class Calculator {
         writer.handleString(String.format(Messages.ResultTemplate.getMessage(), output));
         return output;
     }
-
-    public static void main(String[] args) {
-        new Calculator(new ConsoleReader(), new ConsoleWriter()).start();
-    }
 }
