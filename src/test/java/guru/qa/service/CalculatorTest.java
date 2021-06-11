@@ -34,20 +34,17 @@ class CalculatorTest {
     @Test
     void messagesMultTest() {
         Reader mockReader = new MockMultReader();
-        MockWriter mockWriter = new MockWriter();
+        Writer mockWriter = new MockWriter();
         new Calculator(mockReader, mockWriter).start();
-
-        String[] output = mockWriter.readFromOutputStream().split("\n");
-        System.out.println(output);
 
         SoftAssertions softAssertions = new SoftAssertions();
 
-        softAssertions.assertThat(output[0])
-                .isEqualTo("Enter 2 digit: ");
-        softAssertions.assertThat(output[1])
-                .isEqualToIgnoringCase("Enter operator (+, *, -, /, ^): ");
-        softAssertions.assertThat(output[2])
-                .isEqualToIgnoringCase("Result: 3 * 5 = 15");
+        softAssertions.assertThat(mockWriter.handleString(Messages.WelcomeMessage.getMessage()))
+                .isEqualTo("Enter 2 digit: \n");
+        softAssertions.assertThat(mockWriter.handleString(Messages.RequestForOperator.getMessage()))
+                .isEqualTo("Enter operator (+, *, -, /, ^): \n");
+        softAssertions.assertThat(String.format(Messages.ResultTemplate.getMessage(), "3 * 5 = 15"))
+                .isEqualTo("Result: 3 * 5 = 15");
         softAssertions.assertAll();
     }
 }

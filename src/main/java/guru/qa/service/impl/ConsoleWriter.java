@@ -4,12 +4,8 @@ import guru.qa.service.Writer;
 
 public class ConsoleWriter implements Writer {
     @Override
-    public void handleString(String output) {
+    public Object handleString(String output) {
         System.out.println(output);
-    }
-
-    @Override
-    public String readFromOutputStream() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 }
