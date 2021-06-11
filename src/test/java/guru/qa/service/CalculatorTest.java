@@ -41,6 +41,20 @@ class CalculatorTest {
     }
 
     @Test
+    void calculatorZeroDivTest() {
+        mockReader = new MockZeroDivReader();
+        mockWriter = new MockWriter();
+        calculator = new Calculator(mockReader, mockWriter);
+        Exception caughtException = null;
+        try {
+            calculator.start();
+        }catch (Exception e){
+            caughtException = e;
+        }
+        Assertions.assertEquals("ZeroDivisionError", caughtException.getMessage());
+    }
+
+    @Test
     void calculatorMinusTest() {
         mockReader = new MockMinusReader();
         mockWriter = new MockWriter();
