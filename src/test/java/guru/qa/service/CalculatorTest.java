@@ -45,7 +45,7 @@ class CalculatorTest {
         softAssertions.assertThat(output[0])
                 .isEqualTo("Enter 2 digit: ");
         softAssertions.assertThat(output[1])
-                .isEqualToIgnoringCase("Enter operator (+, *, -, /): ");
+                .isEqualToIgnoringCase("Enter operator (+, *, -, /, ^): ");
         softAssertions.assertThat(output[2])
                 .isEqualToIgnoringCase("Result: 3 * 5 = 15");
         softAssertions.assertAll();
