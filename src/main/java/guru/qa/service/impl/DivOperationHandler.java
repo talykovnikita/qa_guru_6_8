@@ -6,13 +6,10 @@ public class DivOperationHandler implements OperationHandler {
 
     @Override
     public int invoke(int first, int second) {
-        int result;
-
-        try {
-            result = first / second;
-        }catch (Exception e){
+        if (second == 0){
             throw new ArithmeticException("ZeroDivisionError");
         }
-        return result;
+
+        return first / second;
     }
 }
