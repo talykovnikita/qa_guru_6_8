@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import org.assertj.core.api.SoftAssertions;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 class CalculatorTest {
 
     private Calculator calculator;
@@ -45,13 +47,10 @@ class CalculatorTest {
         mockReader = new MockZeroDivReader();
         mockWriter = new MockWriter();
         calculator = new Calculator(mockReader, mockWriter);
-        Exception caughtException = null;
-        try {
-            calculator.start();
-        }catch (Exception e){
-            caughtException = e;
-        }
-        Assertions.assertEquals("ZeroDivisionError", caughtException.getMessage());
+        Exception exception = assertThrows(ArithmeticException.class, () -> {
+            calculator.start();;
+        });
+        Assertions.assertEquals("ZeroDivisionError", exception.getMessage());
     }
 
     @Test
